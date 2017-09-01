@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+
+    <script src = "lib/jquery-3.1.1.js">  </script>
+
+    <script src="lib/handlebars-v4.0.5.js"></script>
+
+    <script src = "script.js">  </script>
+
+
+    <script id="user-template" type="text/x-handlebars-template">
+
+        {{#each users}}
+
+        <tr id="{{@index}}">
+            <td>{{name}}</td>
+            <td>{{email}}</td>
+            <td>{{phone}}</td>
+            <td>{{company.name}}</td>
+            <td> <input class="deleteUser" type="button" name="line {{@index}}" value="Delete" ></td>
+        </tr>
+
+        {{/each}}
+
+    </script>
+
+    <style>
+        .show-on-hover {opacity: 0;}
+        .show-on-hover:hover {opacity: 1;}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="container">
+            <div class="h2">Users</div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Work place</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="bodyOfTable">
+                </tbody>
+            </table>
+
+            <div id="noUserFound" class="panel panel-default" style="display: none">
+                <div class="panel-body">
+                No users found.
+                </div>
+            </div>
+
+            <div class="h3">Adding user</div>
+
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="text" class="form-control" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Phone">
+                </div>
+                <div class="form-group">
+                    <label for="work">Place of work</label>
+                    <input type="text" class="form-control" id="work" placeholder="Work place">
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-info" id="AddUser">Add user</button>
+                </div>
+            </form>
+
+            <div class="h2">Currency calculator</div>
+
+            <form>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="from_currency">From:</label>
+                            <select id="currencyFrom" class="form-control">
+                                <option>USD</option>
+                                <option>EUR</option>
+                                <option>RUB</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="from_currency">To:</label>
+                            <select id="currencyTo" class="form-control">
+                                <option>USD</option>
+                                <option>EUR</option>
+                                <option>RUB</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input id="MoneyForExchange" type="text" class="form-control" placeholder="Enter value">
+                </div>
+                <div class="form-group">
+                    <button id="calculate" type="button" class="btn btn-info">Calculate</button>
+                </div>
+                <div class="form-group">
+                    <div id="showCalculatorResult" class="help-block">Result:</div>
+                    <div id="errorCalcul" class="help-block"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
